@@ -1,6 +1,8 @@
 import requests
 import os
 
+from .elkey import elKey
+
 def isMale(content):
     isMaleWords = ['wife', 'girlfriend']
     isFemaleWords = ['husband', 'boyfriend']
@@ -23,16 +25,15 @@ def GenerateVoiceID(isMale):
         return '21m00Tcm4TlvDq8ikWAM';
     
 
-def GenerateVoice(contentPath):
-    with open('elkey.env', 'r') as file:
-        XI_API_KEY = file.read()
-        file.close()
+def GenerateVoice(detailsArray):
+    XI_API_KEY = elKey
     CHUNK_SIZE = 1024
+    
+    updatedDetailsArray = detailsArray
+    
+    for file in updatedDetailsArray:
+        filePath = file['textFilePath']
 
-
-    for file in os.listdir(contentPath):
-        filePath = contentPath + '/' + file
-        
         with open(filePath) as openedFile: 
             contents = openedFile.read()
             VOICE_ID = GenerateVoiceID(isMale(contents))
@@ -59,11 +60,14 @@ def GenerateVoice(contentPath):
             response = requests.post(tts_url, headers=headers, json=data, stream=True)
 
             if response.ok:
-                with open(OUTPUT_PATH, 'wb') as f:
-                    for chunk in response.iter_content(chunk_size=CHUNK_SIZE):
-                        f.write(chunk)
-                f.close()
+               with open(OUTPUT_PATH, 'wb') as f:
+                   for chunk in response.iter_content(chunk_size=CHUNK_SIZE):
+                       f.write(chunk)
+               f.close()
+               file['audioPath'] = OUTPUT_PATH
+               print('Audio Stream Saved Successfully')
+               print(f'File Audio Path:' + file['audioPath'])
 
-                print('Audio Stream Saved Successfully')
             else:
                 print(response.text)
+    return updatedDetailsArray

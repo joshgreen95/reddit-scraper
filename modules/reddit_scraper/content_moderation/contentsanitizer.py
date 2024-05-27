@@ -1,5 +1,5 @@
-titleBanList = ['.', '/', '?', '"']
-contentBanList = ['/', '&#x200B;']
+from .ban_lists.titlebanlist import titleBanList as titleBanList
+from .ban_lists.contentbanlist import contentBanList as contentBanList
 
 def Sanitize(title, innerText):
     def SanitizeTitle(title):
@@ -15,7 +15,7 @@ def Sanitize(title, innerText):
 
         for ban in contentBanList:
             sanitizedInnerText = sanitizedInnerText.replace(ban, '')
-            sanitizedInnerText = sanitizedInnerText.replace('AITAH', 'Am I the Dingus')
+            sanitizedInnerText = sanitizedInnerText.replace('AITAH', 'Am I the villian')
         return sanitizedInnerText
     
     finalTitle = SanitizeTitle(title)
