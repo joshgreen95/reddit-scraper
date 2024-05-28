@@ -5,8 +5,20 @@ from moviepy.editor import VideoFileClip, AudioFileClip
 
 from .generatesubtitles import GenerateSubtitles
 
-def Edit(details, videoPath, format):
+def Edit(details, videoFolderPath, format):
     
+    def GenerateVideoPath(videoFolderPath):
+        dirList = os.walk(videoFolderPath)
+        videoList = []
+
+        for root, dirs, files in dirList:
+            for name in files:
+                videoList.append(os.path.join(root, name))
+
+        videoPath = random.choice(videoList)
+        return videoPath
+        
+
     def CutAndAddAudio(audioPath, videoPath):
         #Load video and audio clips
         videoClip = VideoFileClip(videoPath)
@@ -32,6 +44,8 @@ def Edit(details, videoPath, format):
         print(cutVideo)
         return cutVideo
 
+    # video
+    videoPath = GenerateVideoPath(videoFolderPath)
     cutVideo = CutAndAddAudio(details['audioPath'], videoPath)
     cutVideo = GenerateSubtitles(details, cutVideo)
     #Write to File
