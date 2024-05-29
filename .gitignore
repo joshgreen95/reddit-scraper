@@ -18,3 +18,4 @@ modules/voice_generation/__pycache__/generatevoice.cpython-37.pyc
 modules/video_editor/vid.mp4
 modules/video_editor/newvid.mp4
 modules/video_editor/audio.mp3
+temp.wav
