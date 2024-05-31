@@ -40,6 +40,7 @@ def GenerateSubtitles(details, videoClip):
                                 font=font,
                                 fontsize=fontSize,
                                 color=color,
+                                
                                 )
             textClip = textClip.set_position(subtitlePosition)
             textClip = textClip.set_start(startTime)

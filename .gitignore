@@ -19,3 +19,7 @@ modules/video_editor/vid.mp4
 modules/video_editor/newvid.mp4
 modules/video_editor/audio.mp3
 temp.wav
+/modules/description_generation/__pycache__
+modules/description_generation/chat_gpt_api_key.py
+/modules/tiktok/__pycache__
+modules/tiktok/tiktok_details.py
