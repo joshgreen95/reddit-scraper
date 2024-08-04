@@ -1,5 +1,5 @@
 from openai import OpenAI
-from .chat_gpt_api_key import API_KEY
+from ..credentials_harvester.credentialsharvester import GetCredential
 
 def GenerateDescription(details):
     textPost = ''
@@ -9,7 +9,7 @@ def GenerateDescription(details):
 
     prompt = f'Create a TikTok description for the following Reddit story transcript: \"{textPost}\". Make sure to include the hashtags: #Reddit, #redditstories. Please also generate a few more hashtags related to this'
 
-    client = OpenAI(api_key=API_KEY)
+    client = OpenAI(api_key=GetCredential('CHATGPT', 'API_KEY'))
     response = client.chat.completions.create(
         model='gpt-3.5-turbo',
         messages=[

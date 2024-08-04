@@ -23,3 +23,4 @@ temp.wav
 modules/description_generation/chat_gpt_api_key.py
 /modules/tiktok/__pycache__
 modules/tiktok/tiktok_details.py
+credentials.json

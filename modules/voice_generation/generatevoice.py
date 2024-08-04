@@ -1,7 +1,7 @@
 import requests
 import os
 
-from .elkey import elKey
+from ..credentials_harvester.credentialsharvester import GetCredential
 
 def isMale(content):
     isMaleWords = ['wife', 'girlfriend']
@@ -26,7 +26,7 @@ def GenerateVoiceID(isMale):
     
 
 def GenerateVoice(detailsArray):
-    XI_API_KEY = elKey
+    XI_API_KEY = GetCredential('ELEVENLABS', 'XI_API_KEY')
     CHUNK_SIZE = 1024
     
     updatedDetailsArray = detailsArray
