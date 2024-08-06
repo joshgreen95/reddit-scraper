@@ -16,12 +16,12 @@ def Scrape(scriptDir):
         password = GetCredential('REDDIT', 'CLIENT_PASSWORD')
     )
 
-    subreddit = input('Which Subreddit should be scraped? (r/_____)').lower()
+    subreddit = input('Which Subreddit should be scraped? (r/_____) \n').lower()
     subreddit = reddit.subreddit(subreddit)
-    numPosts = int(input('How many posts should be retrieved? (Max 10)'))
+    numPosts = int(input('How many posts should be retrieved? (Max 10) \n'))
     #Check Subreddit is valid from choice of 'Top, Hot, Rising, New, Controversial
-    postCategory = input('How should posts be sorted? (Top, Hot, New, Rising, Controversial)').lower()
-    timeFilter = input('How far back should we check? (Day, Week, Month, Hour, Year, All)').lower()
+    postCategory = input('How should posts be sorted? (Top, Hot, New, Rising, Controversial) \n').lower()
+    timeFilter = input('How far back should we check? (Day, Week, Month, Hour, Year, All) \n').lower()
     
     validSelection = False
     posts = None
@@ -44,7 +44,7 @@ def Scrape(scriptDir):
                 posts = subreddit.controversial(time_filter=timeFilter, limit=numPosts)
                 validSelection = True
             case __:
-                print('Invalid Post Category Selection :^(')
+                print('Invalid Post Category Selection :^( \n')
 
     folderID = f'{subreddit}_{datetime.datetime.now().date()}' 
     print(folderID)
@@ -68,7 +68,7 @@ def Scrape(scriptDir):
             'textFilePath': fileLocation,
         }
 
+        print(f'-- Post Found : {post.title}')
         detailsArray.append(fileDetails)
-
-    print(detailsArray)
+    print('-- Reddit Scrape Complete')
     return detailsArray

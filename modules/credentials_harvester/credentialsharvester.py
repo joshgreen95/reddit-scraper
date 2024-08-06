@@ -39,17 +39,17 @@ def RuntimeHarvest():
     credentialsJson = json.load(credentialsFile)
 
     #If credentials have been entered already gives chance to skip
-    print('Skip Credential Entry: Y/N')
+    print('Skip Credential Entry: Y/N \n')
     choice = input().lower()
 
     if(choice != 'y'):
         for category in credentialsJson:
             for subCategory in credentialsJson[category]:
-                print(f'Please enter your {category} : {subCategory}')
-                print(f'Current value: {credentialsJson[category][subCategory]}  * to skip')
+                print(f'Please enter your {credentialsJson[category][subCategory]['DISPLAY']}')
+                print(f'Current value: {credentialsJson[category][subCategory]['VALUE']}  * to skip \n')
                 choice = input()
                 if(choice != '*'):
-                    credentialsJson[category][subCategory] = choice
+                    credentialsJson[category][subCategory]['VALUE'] = choice
         
     credentialsFile = open(FindCredentialsFile(), 'w')
     json.dump(credentialsJson, credentialsFile)
@@ -60,5 +60,5 @@ def GetCredential(category, value):
     credentialsJson = json.load(credentialsFile)
     credentialsFile.close()
     
-    value = credentialsJson[category][value]
+    value = credentialsJson[category][value]['VALUE']
     return(value)
