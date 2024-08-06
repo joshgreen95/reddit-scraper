@@ -2,22 +2,32 @@
 
 ## Overview
 
-Reddit Video Creator is a Python-based application that automates the creation of engaging video content from top Reddit stories. This tool utilizes various APIs and technologies to generate text-to-speech narration, transcribe audio, create subtitles, and synchronize these elements with pre-recorded gameplay footage. The final output is a video ready for upload to platforms like TikTok, complete with a generated description.
+Reddit Video Creator is a Python-based application that automates the creation of AI Generated videos and descriptions which are uploadable to TikTok. 
 
-## Features
+## Workflow
 
-- **Reddit Integration**: Fetches top stories from Reddit using the Reddit API.
+- **Reddit Scraper**: Scrapes from Reddit using the PRAW Reddit Wrapper, allows user input for Subreddit and number of videos to compile.
 - **Text-to-Speech**: Converts story text to speech using the ElevenLabs API.
-- **Audio Transcription**: Uses Whisper to transcribe audio and generate word-level subtitles.
-- **Video Editing**: Randomly selects segments from pre-recorded gameplay videos to match the length of the narration.
-- **Description Generation**: Utilizes the ChatGPT API to create engaging descriptions for videos.
-- **Output**: Produces a fully edited video with subtitles and descriptions for easy upload.
+- **Audio Transcription**: Uses Whisper to transcribe audio and generate word-by-word subtitle tracks.
+- **Video Editing**: Randomly selects segments from user video (think minecraft parkour) to match the length of the narration and overlays subtitles.
+- **Description Generation**: Uses ChatGPT API to create description and hashtags for videos.
+- **Output**: Produces an edited video with subtitles and descriptions for easy upload.
 
 ## Technologies Used
 
-- **Python**: Core programming language for the project.
-- **Reddit API**: To extract top stories from Reddit.
+- **Python**: ...Obviously.
+- **Praw**: To extract Reddit posts.
 - **ElevenLabs API**: For generating text-to-speech audio.
-- **Whisper**: To transcribe speech into text and generate subtitles.
-- **FFMPEG**: For video processing and editing.
-- **OpenAI API**: To generate video descriptions.
+- **OpenAI's Whisper**: To generate subtitles.
+- **PyMovie**: For video processing and editing.
+- **ChatGPT**: To generate video descriptions.
+
+## Prerequisites
+This project needs FFMPEG and ImageMagik
+
+## Getting Started
+1. Clone the Repo
+2. ```sh
+   git clone https://github.com/joshgreen95/reddit-scraper.git
+   ```
+3. Install PiP Dependencies
