@@ -1,5 +1,4 @@
-# Reddit Video Creator
-
+# Reddit Scraper toTiktok 
 ## Overview
 
 Reddit Video Creator is a Python-based application that automates the creation of AI Generated videos and descriptions which are uploadable to TikTok. 
