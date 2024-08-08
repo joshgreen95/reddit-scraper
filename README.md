@@ -31,20 +31,20 @@ This project needs FFMPEG and ImageMagik
    git clone https://github.com/joshgreen95/reddit-scraper.git
    ```
 1.5. Collect API Keys, ready for prompt. If you dont have any of these, make the accounts
-```Needed Keys
+   ```sh
    Reddit API Client ID
    Reddit API Secret Key
    Your Reddit Username and Password ...Obviously
    Elevenlabs XI Api Key
    ChatGPT Api Key
-```
+   ```
 2. Install PiP Dependencies
-``` sh
-Praw
-Moviepy
-Whisper
-openai
-```
+   ```sh
+   Praw
+   Moviepy
+   Whisper
+   openai
+   ```
 3. Place Videos into Videos folder ===Try to use videos over 10 minutes and in the correct aspect ratio.==
 4. Run the Main.py Script and follow prompts.
 
