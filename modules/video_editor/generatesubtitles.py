@@ -1,9 +1,11 @@
-import os
+import ssl
+import certifi
 
 from pydub import AudioSegment
-from moviepy.editor import VideoFileClip, TextClip, CompositeVideoClip
+from moviepy.editor import TextClip, CompositeVideoClip
 
 import whisper
+import urllib.request
 
 def GenerateSubtitles(details, videoClip):
     font = 'arial'
@@ -13,6 +15,10 @@ def GenerateSubtitles(details, videoClip):
     subtitlePosition = ('center')
 
     def Transcribe(path):
+        sslContext = ssl.create_default_context(cafile=certifi.where())
+        opener = urllib.request.build_opener(urllib.request.HTTPSHandler(context=sslContext))
+        urllib.request.install_opener(opener)
+        
         model = whisper.load_model("base")
         results = model.transcribe(path, word_timestamps=True)
         return results

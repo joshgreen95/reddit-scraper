@@ -8,16 +8,22 @@ from .generatesubtitles import GenerateSubtitles
 def Edit(details, videoFolderPath, format):
     
     def GenerateVideoPath(videoFolderPath):
+        def IsVideoFile(filename):
+            validExtensions = ['.mp4', '.avi', '.mov', '.mkv']
+            return any(filename.endswith(ext) for ext in validExtensions)
+        
         dirList = os.walk(videoFolderPath)
         videoList = []
+        
 
         for root, dirs, files in dirList:
             for name in files:
-                videoList.append(os.path.join(root, name))
-
+                if(IsVideoFile(name)):
+                    videoList.append(os.path.join(root, name))
+                else:
+                    continue
         videoPath = random.choice(videoList)
         return videoPath
-        
 
     def CutAndAddAudio(audioPath, videoPath):
         #Load video and audio clips
