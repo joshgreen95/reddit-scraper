@@ -44,7 +44,7 @@ This project needs FFMPEG and ImageMagik
    Whisper
    openai
    ```
-4. Place Videos into Videos folder ===Try to use videos over 10 minutes and in the correct aspect ratio.==
+4. Place Videos into Videos folder *Try to use videos over 10 minutes and in the correct aspect ratio.*
 5. Run the Main.py Script and follow prompts.
 
 The Program will spit out relevent files to Post/Subreddit-day/time
